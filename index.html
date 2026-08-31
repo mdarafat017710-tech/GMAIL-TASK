@@ -23,259 +23,205 @@
 
   <div id="tab-task" class="tab-content active">
     <div id="gmail-submit-trigger" class="account-card" style="text-align: center; padding: 22px 14px;">
-      <img src="https://i.ibb.co.com/Z6xm2JRN/Google-G-logo-svg.png" alt="Gmail Logo" class="task-logo-img">
-      <h3 style="font-size:16px; font-weight:700; margin-bottom: 4px;">Gmail Task</h3>
-      <p style="font-size:13px; color:var(--accent-blue); font-weight:700; margin-bottom: 15px;">Reward: 10 ৳</p>
-      <button class="btn-proceed" onclick="startGmailSubmission()">
-        <span>Start Task</span>
+      <img src="https://i.ibb.co.com/Z6xm2JRN/Google-G-logo-2015-svg.png" class="task-logo-img" alt="Google Logo">
+      <p style="font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Gmail Account Create</p>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">Create a new Gmail account and earn ৳10 per task.</p>
+      <button class="action-btn action-btn-confirm" onclick="startTaskProcess()">Start Task</button>
+    </div>
+
+    <div id="step-1" class="step-container">
+      <div class="info-box-group">
+        <label class="box-label">Your Gmail Address</label>
+        <div class="input-wrapper">
+          <input type="email" id="input-email" class="ios-box" placeholder="example@gmail.com" autocomplete="off" oninput="validateStepField('email')">
+          <div class="input-indicator" id="email-indicator">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+        </div>
+        <div class="field-error-msg" id="email-error-msg">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="email-error-text"></span>
+        </div>
+      </div>
+      <button id="btn-1" class="action-btn action-btn-next" disabled onclick="nextStep(1)">
+        <span class="btn-text">Process</span>
+        <svg class="ios-spinner btn-spinner" style="display:none;" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="21" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
       </button>
     </div>
 
-    <div id="gmail-submit-form" style="display: none;">
-      <div id="step-1" class="step-container active">
-        <div class="info-box-group">
-          <label class="box-label">Your Email Address</label>
-          <div class="input-wrapper">
-            <input type="email" id="input-email" class="ios-box" placeholder="Enter email address" oninput="validateGmailField('email', 1)">
-            <div class="input-indicator" id="email-indicator">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+    <div id="step-2" class="step-container">
+      <div class="step-header-nav">
+        <button type="button" class="back-arrow-btn" onclick="prevStep(1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="info-box-group">
+        <label class="box-label">Your Password</label>
+        <div class="input-wrapper">
+          <input type="text" id="input-password" class="ios-box" placeholder="Password (min 6 chars)" autocomplete="off" oninput="validateStepField('password')">
+          <div class="input-indicator" id="password-indicator">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
-          <div class="field-error-msg" id="email-error-msg">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-            <span>Your email already submitted!</span>
-          </div>
-        </div>
-        <div class="action-container">
-          <button class="btn-proceed" id="btn-1" disabled onclick="nextStep(1)">
-            <span class="btn-text">Proceed</span>
-            <svg class="ios-spinner btn-spinner" viewBox="0 0 24 24">
-              <line x1="12" y1="3" x2="12" y2="6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="21" y1="12" x2="18" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="12" y1="21" x2="12" y2="18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="3" y1="12" x2="6" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </button>
         </div>
       </div>
+      <button id="btn-2" class="action-btn action-btn-next" disabled onclick="nextStep(2)">
+        <span class="btn-text">Process</span>
+        <svg class="ios-spinner btn-spinner" style="display:none;" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="21" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
 
-      <div id="step-2" class="step-container">
-        <div class="step-header-nav">
-          <button class="back-arrow-btn" onclick="prevStep(1)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          </button>
-          <label class="box-label">Your Account Password</label>
-        </div>
-        <div class="info-box-group">
-          <div class="input-wrapper">
-            <input type="text" id="input-password" class="ios-box" placeholder="Enter account password" oninput="validateStandardField('password', 6, 2)">
-            <div class="input-indicator" id="password-indicator">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+    <div id="step-3" class="step-container">
+      <div class="step-header-nav">
+        <button type="button" class="back-arrow-btn" onclick="prevStep(2)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="info-box-group">
+        <label class="box-label">Your Recovery Email</label>
+        <div class="input-wrapper">
+          <input type="email" id="input-recovery" class="ios-box" placeholder="recovery@example.com" autocomplete="off" oninput="validateStepField('recovery')">
+          <div class="input-indicator" id="recovery-indicator">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
         </div>
-        <div class="action-container">
-          <button class="btn-proceed" id="btn-2" disabled onclick="nextStep(2)">
-            <span class="btn-text">Proceed</span>
-            <svg class="ios-spinner btn-spinner" viewBox="0 0 24 24">
-              <line x1="12" y1="3" x2="12" y2="6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="21" y1="12" x2="18" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="12" y1="21" x2="12" y2="18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="3" y1="12" x2="6" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </button>
+        <div class="field-error-msg" id="recovery-error-msg">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="recovery-error-text"></span>
         </div>
       </div>
+      <button id="btn-3" class="action-btn action-btn-next" disabled onclick="nextStep(3)">
+        <span class="btn-text">Process</span>
+        <svg class="ios-spinner btn-spinner" style="display:none;" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="21" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
 
-      <div id="step-3" class="step-container">
-        <div class="step-header-nav">
-          <button class="back-arrow-btn" onclick="prevStep(2)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          </button>
-          <label class="box-label">Recovery Email</label>
-        </div>
-        <div class="info-box-group">
-          <div class="input-wrapper">
-            <input type="email" id="input-recovery" class="ios-box" placeholder="Enter recovery email" oninput="validateGmailField('recovery', 3)">
-            <div class="input-indicator" id="recovery-indicator">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-          </div>
-          <div class="field-error-msg" id="recovery-error-msg">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-            <span>Your email already submitted!</span>
-          </div>
-        </div>
-        <div class="action-container">
-          <button class="btn-proceed" id="btn-3" disabled onclick="nextStep(3)">
-            <span class="btn-text">Proceed</span>
-            <svg class="ios-spinner btn-spinner" viewBox="0 0 24 24">
-              <line x1="12" y1="3" x2="12" y2="6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="21" y1="12" x2="18" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="12" y1="21" x2="12" y2="18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="3" y1="12" x2="6" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
+    <div id="step-4" class="step-container">
+      <div class="step-header-nav">
+        <button type="button" class="back-arrow-btn" onclick="prevStep(3)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
       </div>
-
-      <div id="step-4" class="step-container">
-        <div class="account-card" id="confirmation-card-content"></div>
-      </div>
+      <div id="confirmation-card-wrapper" class="account-card">
+        </div>
+      <button id="btn-submit-task" class="action-btn action-btn-confirm" onclick="submitTask()">
+        <span class="btn-text">Submit Account</span>
+        <svg class="ios-spinner btn-spinner" style="display:none;" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="21" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="21" x2="12" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </div>
 
   <div id="tab-submit-history" class="tab-content">
-    <div class="search-container">
-      <div class="search-box">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="gmail-search-input" placeholder="Search by email address..." oninput="handleGmailSearchInput()">
-        <button class="clear-btn" id="gmail-clear-btn" onclick="clearGmailSearchInput()">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+    <div id="gmail-history-container" class="history-list">
       </div>
-      <button class="search-btn" id="gmail-search-btn" onclick="handleGmailSearch()">
-        <span id="gmail-btn-text">Search</span>
-        <svg id="gmail-btn-spinner" class="ios-spinner btn-spinner" viewBox="0 0 24 24">
-          <line x1="12" y1="3" x2="12" y2="6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="21" y1="12" x2="18" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="12" y1="21" x2="12" y2="18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="3" y1="12" x2="6" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-    <div id="gmail-history-container"></div>
   </div>
 
   <div id="tab-my-account" class="tab-content">
-    <div class="user-profile-center-card">
-      <img id="avatar" src="https://telegram.org/img/t_logo.png" class="user-avatar-large" alt="Avatar">
-      <h2 id="username" class="user-name-large">Loading...</h2>
-      <div class="user-id-row">
-        <strong class="user-id-label">User ID: </strong>
-        <span class="user-id-val" id="user-id">000000</span>
-        <button class="copy-btn" id="id-copy-btn" onclick="copyUserId()">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-        </button>
+    <div class="user-profile-header">
+      <img id="avatar" src="https://telegram.org/img/t_logo.png" alt="Avatar">
+      <div class="user-meta">
+        <p id="username" class="user-name">User</p>
+        <p class="user-id-text">ID: <span id="user-id">---</span> 
+          <button class="id-copy-icon-btn" id="id-copy-btn" onclick="copyUserId()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          </button>
+        </p>
       </div>
+    </div>
 
-      <div class="account-balance-row">
-        <span class="account-balance-text">Available Balance: <strong id="account-balance-val">0</strong></span>
-        <button class="refresh-btn" id="refresh-balance-btn" onclick="refreshUserBalance()">
-          <svg class="refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-        </button>
+    <div class="balance-card">
+      <div class="balance-left">
+        <span class="balance-title">Available Balance</span>
+        <span class="balance-amount">৳<span id="account-balance-val">0</span></span>
       </div>
+      <button class="refresh-btn" id="refresh-balance-btn" onclick="refreshUserBalance()">
+        <svg class="refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+      </button>
     </div>
 
     <div class="dashboard-grid">
       <div class="stat-card">
-        <span class="stat-line text-total">Total Submit: <strong id="stat-total">0</strong></span>
+        <span class="stat-line text-total">Total Submit: <span id="stat-total">0</span></span>
       </div>
       <div class="stat-card">
-        <span class="stat-line text-pending">Pending: <strong id="stat-pending">0</strong></span>
+        <span class="stat-line text-pending">Pending: <span id="stat-pending">0</span></span>
       </div>
       <div class="stat-card">
-        <span class="stat-line text-completed">Completed: <strong id="stat-completed">0</strong></span>
+        <span class="stat-line text-completed">Completed: <span id="stat-completed">0</span></span>
       </div>
       <div class="stat-card">
-        <span class="stat-line text-rejected">Rejected: <strong id="stat-rejected">0</strong></span>
+        <span class="stat-line text-rejected">Rejected: <span id="stat-rejected">0</span></span>
       </div>
     </div>
   </div>
 
   <div id="tab-withdraw" class="tab-content">
-    <div class="account-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <span style="font-size:13px; font-weight:700;">Available Balance</span>
-        <div class="balance-badge">৳ <strong id="user-balance">0</strong></div>
+    <div class="account-card" style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px;">
+      <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Available Balance:</span>
+      <span style="font-size: 18px; font-weight: 800; color: var(--accent-green);">৳<span id="user-balance">0</span></span>
+    </div>
+
+    <div class="payment-methods-grid">
+      <div class="payment-card active" onclick="selectPaymentMethod('bKash', this)">
+        <img src="https://i.ibb.co.com/84S7K4Dk/bkash.png" class="pay-logo" alt="bKash">
+        <span class="pay-name">bKash</span>
+      </div>
+      <div class="payment-card" onclick="selectPaymentMethod('Nagad', this)">
+        <img src="https://i.ibb.co.com/6c2m4pKG/nagad.png" class="pay-logo" alt="Nagad">
+        <span class="pay-name">Nagad</span>
+      </div>
+      <div class="payment-card" onclick="selectPaymentMethod('Rocket', this)">
+        <img src="https://i.ibb.co.com/Kzmsm43F/rocket.png" class="pay-logo" alt="Rocket">
+        <span class="pay-name">Rocket</span>
+      </div>
+    </div>
+
+    <div class="account-card" style="margin-bottom: 16px;">
+      <div class="info-box-group" style="margin-bottom: 12px;">
+        <label class="box-label">Account Number</label>
+        <div class="input-wrapper">
+          <input type="tel" id="withdraw-phone" class="ios-box" placeholder="017xxxxxxxx" autocomplete="off" oninput="validateWithdrawForm()">
+          <div class="input-indicator" id="phone-indicator">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+        </div>
       </div>
 
       <div class="info-box-group">
-        <label class="box-label">Select Payment Method</label>
-        <div class="payment-methods-grid">
-          <div class="payment-card active" onclick="selectPaymentMethod('bKash', this)">
-            <img src="https://i.ibb.co.com/bR1wnvmg/images.jpg" alt="bKash">
-            <span>bKash</span>
-          </div>
-          <div class="payment-card" onclick="selectPaymentMethod('Nagad', this)">
-            <img src="https://i.ibb.co.com/YF0cQypT/images-1.png" alt="Nagad">
-            <span>Nagad</span>
-          </div>
-        </div>
-
-        <label class="box-label" style="margin-top:12px;">Account Number</label>
+        <label class="box-label">Withdraw Amount (Min ৳50)</label>
         <div class="input-wrapper">
-          <input type="tel" id="withdraw-phone" class="ios-box" placeholder="017XXXXXXXX" oninput="validateWithdrawForm()">
-          <div class="input-indicator" id="phone-indicator">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-        </div>
-
-        <label class="box-label" style="margin-top:12px;">Withdraw Amount (Min 20 BDT)</label>
-        <div class="input-wrapper">
-          <input type="number" id="withdraw-amount" class="ios-box" placeholder="Enter amount" oninput="validateWithdrawForm()">
+          <input type="number" id="withdraw-amount" class="ios-box" placeholder="50" autocomplete="off" oninput="validateWithdrawForm()">
           <div class="input-indicator" id="amount-indicator">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
         </div>
-
-        <div class="field-error-msg" id="withdraw-error-msg">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-          <span id="withdraw-error-text">Minimum withdraw 20 BDT</span>
-        </div>
-
-        <div class="action-container" style="margin-top:16px;">
-          <button class="btn-proceed" id="btn-withdraw-submit" disabled onclick="handleWithdrawSubmit()">
-            <span>Request Withdraw</span>
-          </button>
-        </div>
       </div>
+
+      <div class="field-error-msg" id="withdraw-error-msg" style="margin-top: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <span id="withdraw-error-text">Min withdraw is ৳50</span>
+      </div>
+
+      <button id="btn-withdraw-submit" class="action-btn action-btn-confirm" disabled style="margin-top: 14px;" onclick="handleWithdrawSubmit()">Request Withdraw</button>
     </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+      <h2 style="font-size: 14px; font-weight: 700; color: var(--text-main);">Withdraw History</h2>
+    </div>
+
+    <div id="withdraw-history-container" class="history-list">
+      </div>
   </div>
 
-  <div id="tab-withdraw-history" class="tab-content">
-    <div class="search-container">
-      <div class="search-box">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="withdraw-search-input" placeholder="Search withdraw history..." oninput="handleWithdrawSearchInput()">
-        <button class="clear-btn" id="withdraw-clear-btn" onclick="clearWithdrawSearchInput()">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-      <button class="search-btn" id="withdraw-search-btn" onclick="handleWithdrawSearch()">
-        <span id="withdraw-btn-text">Search</span>
-        <svg id="withdraw-btn-spinner" class="ios-spinner btn-spinner" viewBox="0 0 24 24">
-          <line x1="12" y1="3" x2="12" y2="6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="18.36" y1="5.64" x2="16.24" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="21" y1="12" x2="18" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="18.36" y1="18.36" x2="16.24" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="12" y1="21" x2="12" y2="18" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="5.64" y1="18.36" x2="7.76" y2="16.24" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="3" y1="12" x2="6" y2="12" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="5.64" y1="5.64" x2="7.76" y2="7.76" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-    <div id="withdraw-history-container"></div>
-  </div>
-
-  <div class="bottom-nav">
+  <nav class="bottom-nav">
     <div class="nav-item active" onclick="switchMainTab('task', this)">
       <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M12 5v14M5 12h14"></path></svg>
       <span>Task</span>
@@ -292,11 +238,7 @@
       <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
       <span>Withdraw</span>
     </div>
-    <div class="nav-item" onclick="switchMainTab('withdraw-history', this)">
-      <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-      <span>History</span>
-    </div>
-  </div>
+  </nav>
 
   <script type="module" src="script.js"></script>
 </body>
