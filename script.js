@@ -364,14 +364,15 @@ function renderWithdrawHistory() {
 window.handleGmailSearchInput = function() {
   const val = document.getElementById('gmail-search-input').value;
   document.getElementById('gmail-clear-btn').style.display = val.length > 0 ? 'flex' : 'none';
-  // Typing no longer triggers live search/rendering
+  gmailSearchQuery = val;
+  renderGmailHistory();
 };
 
 window.clearGmailSearchInput = function() {
   document.getElementById('gmail-search-input').value = '';
   document.getElementById('gmail-clear-btn').style.display = 'none';
   gmailSearchQuery = '';
-  renderGmailHistory(); // Clear search updates the list
+  renderGmailHistory();
 };
 
 window.handleGmailSearch = function() {
@@ -391,14 +392,15 @@ window.handleGmailSearch = function() {
 window.handleWithdrawSearchInput = function() {
   const val = document.getElementById('withdraw-search-input').value;
   document.getElementById('withdraw-clear-btn').style.display = val.length > 0 ? 'flex' : 'none';
-  // Typing no longer triggers live search/rendering
+  withdrawSearchQuery = val;
+  renderWithdrawHistory();
 };
 
 window.clearWithdrawSearchInput = function() {
   document.getElementById('withdraw-search-input').value = '';
   document.getElementById('withdraw-clear-btn').style.display = 'none';
   withdrawSearchQuery = '';
-  renderWithdrawHistory(); // Clear search updates the list
+  renderWithdrawHistory();
 };
 
 window.handleWithdrawSearch = function() {
@@ -415,7 +417,6 @@ window.handleWithdrawSearch = function() {
   }, 400);
 };
 
-/* Reset Task Submission Form */
 function resetTaskForm() {
   document.getElementById('input-email').value = '';
   document.getElementById('input-password').value = '';
