@@ -46,10 +46,29 @@ body {
 .step-container { display: none; flex-direction: column; gap: 12px; }
 .step-container.active { display: flex; }
 
-.step-header-nav { display: flex; align-items: center; gap: 8px; }
+/* Updated Back Arrow Styling */
+.step-header-nav { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 5px; 
+}
 .back-arrow-btn {
-  background: transparent; border: none; color: var(--accent-blue);
-  cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 2px;
+  background: #ffffff; 
+  border: 1px solid var(--border-color); 
+  color: var(--text-main);
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 34px; 
+  height: 34px; 
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+.back-arrow-btn:active {
+  transform: scale(0.92);
 }
 
 .info-box-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
@@ -81,9 +100,10 @@ body {
 }
 .input-indicator.show { display: flex; }
 
+/* Updated Error Message alignment for new SVG */
 .field-error-msg {
-  display: none; align-items: center; gap: 4px; color: var(--accent-red);
-  font-size: 11px; font-weight: 600; margin-top: 2px;
+  display: none; align-items: center; gap: 6px; color: var(--accent-red);
+  font-size: 12px; font-weight: 600; margin-top: 4px;
 }
 .field-error-msg.show { display: flex; }
 
