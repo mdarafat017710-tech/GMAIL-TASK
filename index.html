@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Toast Notification Popup -->
   <div id="copy-toast">
     <div class="toast-icon-wrapper" id="toast-icon-bg">
       <svg id="toast-svg-check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -18,14 +17,11 @@
     <span id="toast-msg">Copied successfully!</span>
   </div>
 
-  <!-- Header Title -->
   <div class="top-nav">
     <h1 class="header-title" id="main-title">Task</h1>
   </div>
 
-  <!-- TAB 1: TASK -->
   <div id="tab-task" class="tab-content active">
-    <!-- Initial Button Trigger -->
     <div id="gmail-submit-trigger" class="account-card" style="text-align: center; padding: 22px 14px;">
       <img src="https://i.ibb.co.com/Z6xm2JRN/Google-G-logo-svg.png" alt="Gmail Logo" class="task-logo-img">
       <h3 style="font-size:16px; font-weight:700; margin-bottom: 4px;">Gmail Task</h3>
@@ -35,9 +31,7 @@
       </button>
     </div>
 
-    <!-- Submission Steps Container -->
     <div id="gmail-submit-form" style="display: none;">
-      <!-- Step 1: Email Address -->
       <div id="step-1" class="step-container active">
         <div class="info-box-group">
           <label class="box-label">Your Email Address</label>
@@ -48,7 +42,7 @@
             </div>
           </div>
           <div class="field-error-msg" id="email-error-msg">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
             <span>Your email already submitted!</span>
           </div>
         </div>
@@ -69,11 +63,10 @@
         </div>
       </div>
 
-      <!-- Step 2: Password -->
       <div id="step-2" class="step-container">
         <div class="step-header-nav">
           <button class="back-arrow-btn" onclick="prevStep(1)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           </button>
           <label class="box-label">Your Account Password</label>
         </div>
@@ -102,11 +95,10 @@
         </div>
       </div>
 
-      <!-- Step 3: Recovery Email -->
       <div id="step-3" class="step-container">
         <div class="step-header-nav">
           <button class="back-arrow-btn" onclick="prevStep(2)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           </button>
           <label class="box-label">Recovery Email</label>
         </div>
@@ -118,7 +110,7 @@
             </div>
           </div>
           <div class="field-error-msg" id="recovery-error-msg">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
             <span>Your email already submitted!</span>
           </div>
         </div>
@@ -139,14 +131,12 @@
         </div>
       </div>
 
-      <!-- Step 4: Final Confirmation -->
       <div id="step-4" class="step-container">
         <div class="account-card" id="confirmation-card-content"></div>
       </div>
     </div>
   </div>
 
-  <!-- TAB 2: HISTORY (SUBMIT) -->
   <div id="tab-submit-history" class="tab-content">
     <div class="search-container">
       <div class="search-box">
@@ -173,7 +163,6 @@
     <div id="gmail-history-container"></div>
   </div>
 
-  <!-- TAB 3: MY ACCOUNT -->
   <div id="tab-my-account" class="tab-content">
     <div class="user-profile-center-card">
       <img id="avatar" src="https://telegram.org/img/t_logo.png" class="user-avatar-large" alt="Avatar">
@@ -210,7 +199,6 @@
     </div>
   </div>
 
-  <!-- TAB 4: WITHDRAW -->
   <div id="tab-withdraw" class="tab-content">
     <div class="account-card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -248,7 +236,7 @@
         </div>
 
         <div class="field-error-msg" id="withdraw-error-msg">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
           <span id="withdraw-error-text">Minimum withdraw 20 BDT</span>
         </div>
 
@@ -261,7 +249,6 @@
     </div>
   </div>
 
-  <!-- TAB 5: HISTORY (WITHDRAW) -->
   <div id="tab-withdraw-history" class="tab-content">
     <div class="search-container">
       <div class="search-box">
@@ -288,7 +275,6 @@
     <div id="withdraw-history-container"></div>
   </div>
 
-  <!-- Bottom Navigation Bar -->
   <div class="bottom-nav">
     <div class="nav-item active" onclick="switchMainTab('task', this)">
       <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M12 5v14M5 12h14"></path></svg>
