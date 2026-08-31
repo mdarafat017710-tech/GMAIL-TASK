@@ -364,15 +364,14 @@ function renderWithdrawHistory() {
 window.handleGmailSearchInput = function() {
   const val = document.getElementById('gmail-search-input').value;
   document.getElementById('gmail-clear-btn').style.display = val.length > 0 ? 'flex' : 'none';
-  gmailSearchQuery = val;
-  renderGmailHistory();
+  // Typing no longer triggers live search/rendering
 };
 
 window.clearGmailSearchInput = function() {
   document.getElementById('gmail-search-input').value = '';
   document.getElementById('gmail-clear-btn').style.display = 'none';
   gmailSearchQuery = '';
-  renderGmailHistory();
+  renderGmailHistory(); // Clear search updates the list
 };
 
 window.handleGmailSearch = function() {
@@ -392,15 +391,14 @@ window.handleGmailSearch = function() {
 window.handleWithdrawSearchInput = function() {
   const val = document.getElementById('withdraw-search-input').value;
   document.getElementById('withdraw-clear-btn').style.display = val.length > 0 ? 'flex' : 'none';
-  withdrawSearchQuery = val;
-  renderWithdrawHistory();
+  // Typing no longer triggers live search/rendering
 };
 
 window.clearWithdrawSearchInput = function() {
   document.getElementById('withdraw-search-input').value = '';
   document.getElementById('withdraw-clear-btn').style.display = 'none';
   withdrawSearchQuery = '';
-  renderWithdrawHistory();
+  renderWithdrawHistory(); // Clear search updates the list
 };
 
 window.handleWithdrawSearch = function() {
